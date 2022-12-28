@@ -1,4 +1,4 @@
-from save_sql import read
+from save_sql import read, Creating_table
 import sqlite3
 import time_get
 from tqdm import tqdm
@@ -14,6 +14,7 @@ dict = {}
 
 if listOfTables:
     datas = read(cursor)
+    Creating_table(cursor)
     # print(datas)
     for data in tqdm(datas):
         # print(data)

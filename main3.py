@@ -6,7 +6,6 @@ conn = sqlite3.connect('proxy.db')
 cursor = conn.cursor()
 Creating_table(cursor)
 
-
 def analize_messages(link):
     try:
         details = link.split("?")[1].split("&")
@@ -29,11 +28,18 @@ def find_link(link,channal):
         data.update({"channal":channal})
         save(cursor,data)
         conn.commit()
+        time = data.get("time_get")
+        print(round(time, 5))
 
 input_channals = input("Enter channals: ")
-while(1):
+while(input_channals != "query"):
     messages = input("Enter link: ")
+    if messages == "exit":
+        break
     find_link(messages,input_channals)
 
+if input_channals == "query":
+    query = input("Enter query: ")
+    cursor.execute(query)
 
 conn.close()

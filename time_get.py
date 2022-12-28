@@ -31,13 +31,12 @@ def timed_check(host,port,timeout=2):
     if connect1:
     #    return time.time()-t0 # a bit inexact but close enough
         return {
-            "connect": connect1,
+            "connect": 1,
             "time_get": time.time()-t0,
             "time": time.time()
         }
-    else:
-        return {
-            "connect": connect1,
-            "time_get": -1,
-            "time": time.time()
-        }
+    return {
+        "connect": 0,
+        "time_get": -1,
+        "time": time.time()
+    }
