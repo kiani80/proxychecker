@@ -1,4 +1,4 @@
-import time
+from time import time
 import socket
 
 def check(host,port,timeout=2):
@@ -33,7 +33,7 @@ def timed_check(host,port,timeout=2):
         return {
             "connect": 1,
             "time_get": time.time()-t0,
-            "time": time.time()
+            "time": time.now()
         }
     return {
         "connect": 0,

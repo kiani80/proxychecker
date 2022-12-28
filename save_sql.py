@@ -32,7 +32,7 @@ def save(cursor, proxy):
     cursor.execute(query2)
 
     id = cursor.execute(f'''SELECT ID FROM PROXY WHERE server = "{proxy.get("server")}"''').fetchone()[0]
-    query = f'''INSERT INTO connecting (connect, time_get, proxy_ID, date) VALUES ('{proxy.get("connect")}','{proxy.get("time_get")}','{id}','{proxy.get("time")})'''
+    query = f'''INSERT INTO connecting (connect, time_get, proxy_ID) VALUES ('{proxy.get("connect")}','{proxy.get("time_get")}','{id}')'''
     cursor.execute(query)
 
 

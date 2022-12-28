@@ -20,7 +20,7 @@ if listOfTables:
         # print(data)
         connection = time_get.timed_check(data[1], int(data[2]), timeout=2)
         if connection.get("connect"):
-            dict.update({(data[0],data[4]) : connection.get("time_get")})
+            dict.update({(data[0],data[4]) : round(connection.get("time_get"),5)})
         query2 = f'''INSERT INTO connecting (connect, time_get, proxy_ID) VALUES ('{connection.get("connect")}','{connection.get("time_get")}','{data[0]}')'''
         cursor.execute(query2)
 
@@ -30,4 +30,4 @@ conn.close()
 
 
 sorted_dict = sorted(dict.items(), key=operator.itemgetter(1))
-print(sorted_dict)
+print(sorted_dict[:5])
